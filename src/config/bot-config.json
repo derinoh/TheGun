@@ -1,10 +1,11 @@
 {
-  "name": "Bot name",
-  "status": "Bot status",
-  "statusType": "Bot status type, either 'PLAYING', 'LISTENING' or 'WATCHING'",
-  "token": "",
+  "name": "The Gun",
+  "status": "!shoot to kill",
+  "statusType": "WATCHING",
+  "token": "OTA0NzkyMzA3MjgxMzE3OTY4.YYArgA.G3r5VG6K8L59OfLwnbrGwxf-9b0",
   "intents": [
     "GUILDS",
-    "GUILD_MESSAGES"
+    "GUILD_MESSAGES",
+    "GUILD_MEMBERS"
   ]
 }

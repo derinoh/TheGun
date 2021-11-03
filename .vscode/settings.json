@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Gun",
+            "database": "${workspaceFolder:discordjs-bot-template}/src/core/database/gun.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
