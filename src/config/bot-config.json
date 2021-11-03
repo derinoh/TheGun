@@ -2,7 +2,7 @@
   "name": "The Gun",
   "status": "!shoot to kill",
   "statusType": "WATCHING",
-  "token": "OTA0NzkyMzA3MjgxMzE3OTY4.YYArgA.RRhCQV_xwISoO10ER5JnudUa4wo",
+  "token": "",
   "intents": [
     "GUILDS",
     "GUILD_MESSAGES",
