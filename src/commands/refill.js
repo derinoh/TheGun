@@ -22,25 +22,34 @@ module.exports = {
 
   // eslint-disable-next-line no-unused-vars
   async run(ctx) {
-    const memberRoles = await ctx.message.member.roles._roles.map((role) => role.name);
-    if(!memberRoles.includes('🎙️Host') || memberRoles.includes('☕️ Intern Host')) {
-      await ctx.sendText('Your dainty feminine hands fumble with the firearm awkwardly. You can\'t figure out how to reload it.');
+    const memberRoles = await ctx.message.member.roles._roles.map(
+      (role) => role.name,
+    );
+    if (
+      !memberRoles.includes("🎙️Host") || memberRoles.includes("☕️ Intern Host")
+    ) {
+      await ctx.sendText(
+        "Your dainty feminine hands fumble with the firearm awkwardly. You can't figure out how to reload it.",
+      );
       return;
     }
     const toRefill = await ctx.message.mentions.members.first();
     if (toRefill) {
       try {
-        const stmt = await db
-          .prepare(
-            `INSERT INTO bullets (userId, username, bullets) 
+        const stmt = await db.prepare(
+          `INSERT INTO bullets (userId, username, bullets) 
                         VALUES (?,?,1) 
                         ON CONFLICT(userId) DO UPDATE SET 
                         bullets = 1 
                         WHERE userId = ?`,
-          );
-        await stmt.run(toRefill._userID, toRefill.displayName, toRefill._userID);
+        );
+        await stmt.run(
+          toRefill._userID,
+          toRefill.displayName,
+          toRefill._userID,
+        );
         await ctx.sendText(
-          `${toRefill.nickname || toRefill.displayName}'s bullets reset to 1`
+          `${toRefill.nickname || toRefill.displayName}'s bullets reset to 1`,
         );
       } catch (ex) {
         await console.log(ex);
@@ -53,20 +62,18 @@ module.exports = {
         await members.forEach(async (member) => {
           if (member.user.bot) return;
           try {
-            const stmt = await db
-              .prepare(
-                `INSERT INTO bullets (userId, username, bullets) 
+            const stmt = await db.prepare(
+              `INSERT INTO bullets (userId, username, bullets) 
                 VALUES (?, ?, 1) 
                 ON CONFLICT(userId) DO UPDATE SET 
                 bullets = 1 
                 WHERE userId = ?`,
-              );
+            );
             await stmt.run(member._userID, member.displayName, member._userID);
             await console.log(
               `Refilled gun for ${member.nickname || member.displayName}`,
             );
-          }
-          catch (ex) {
+          } catch (ex) {
             await console.log(ex);
           }
         });

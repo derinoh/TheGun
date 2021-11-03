@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Discord = require('discord.js-light');
 const Logger = require('../utils/logger');
+const DBLogger = require('../utils/dblogger');
 
 // Discord collection are simply an extended map (https://discord.js.org/#/docs/collection/master/class/Collection)
 const commands = new Discord.Collection();
@@ -143,9 +144,11 @@ module.exports = {
          || commands.find((cmd) => cmd.aliases && cmd.aliases.includes(ctx.commandName.toLowerCase()));
       try {
          await command.run(ctx);
+         DBLogger.Log(ctx);
          Logger.command(ctx);
          return null;
       } catch (err) {
+         DBLogger.Log(ctx);
          Logger.error(`Error while executing the command ${ctx.commandName}`, err);
          return err;
       }

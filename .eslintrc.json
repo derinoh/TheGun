@@ -11,14 +11,14 @@
         "ecmaVersion": 12
     },
     "rules": {
-        "indent": ["error", 2],
+        "indent": "off",
         "no-console": "off",
         "no-plusplus": "off",
         "no-multiple-empty-lines": "off",
         "nonblock-statement-body-position": "off",
         "global-require": "off",
         "import/no-dynamic-require": "off",
-        "max-len": ["error", 120],
+        "max-len": "off",
         "no-trailing-spaces": "off",
         "no-param-reassign": "off"
     }

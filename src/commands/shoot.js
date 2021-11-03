@@ -44,7 +44,7 @@ module.exports = {
           await ctx.sendText(`⚰️**${toKill.nickname || toKill.displayName}** is dead and cannot be killed.`);
           return;
         }
-        if (memberRoles.includes('☠️ Dead')){
+        if (memberRoles.includes('☠️ Dead')) {
           await ctx.sendText(`⚰️**${ctx.message.member.nickname || ctx.message.member.displayName}** is dead and cannot shoot anyone.`);
           return;
         }
