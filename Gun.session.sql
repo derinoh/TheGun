@@ -1,1 +1,1 @@
-delete from bullets
+delete from log
